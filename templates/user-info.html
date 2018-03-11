@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content1 %}
+
+<h1>Welcome New User!</h1>
+<h3>Please create a username and password before continuing</h3>
+
+<form action="{{ url_for('city_facts_form') }}" method="POST">
+    {{ form.username.label() }}{{ form.username() }}<br>
+    {{ form.password.label() }}{{ form.password() }}<br>
+    {{ form.zipcode.label() }}{{ form.zipcode() }}
+    {{ form.submit() }}
+    {{ form.hidden_tag() }}
+</form>
+
+{% endblock %}
+
+{% block content2 %}
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
