@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content1 %}
+
+<h1>Search Facts by Zipcode</h1>
+
+<form method="POST">
+    {{ form.zipcode.label() }}{{ form.zipcode() }}<br>
+    {{ form.submit() }}
+    {{ form.hidden_tag() }}
+</form>
+
+<div>
+<ol>
+{% for message in get_flashed_messages() %}
+      <li><strong>{{ message }}</strong></li>
+{% endfor %}
+</ol>
+</div>
+
+{% endblock %}

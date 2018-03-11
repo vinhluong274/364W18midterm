@@ -1,18 +1,28 @@
 <h3>Navbar</h3>
 <ul>
-    <li><a href="{{ url_for('home')}}">Home</a></li>
-    <li><a href="{{ url_for('all_facts')}}">Fun Facts</a></li>
-    <li><a href="{{ url_for('all_names')}}">Past Users</a></li>
+    <li><a href="{{ url_for('index')}}">Home</a></li>
+    <li><a href="{{ url_for('all_facts')}}">View All Facts</a></li>
+    <li><a href="{{ url_for('zip_search')}}">Search by Zipcode</a></li>
+    <li><a href="{{ url_for('name_search')}}">Search by Name</a></li>
+    <li><a href="{{ url_for('all_names')}}">Names Searched</a></li>
 </ul>
 
 {% block content1 %}
-<h2>Please enter your name below to use this application.</h2>
-<form action="{{ url_for('home') }}" method="POST">
+<h2>Tell us a fun fact about where you're from!</h2>
+<form action="{{ url_for('index') }}" method="POST">
     {{ form.name.label() }}{{ form.name() }}<br>
+    {{ form.username.label() }}{{ form.username() }}<br>
+    {{ form.zipcode.label() }}{{ form.zipcode() }}<br>
+    {{ form.fact.label() }}{{ form.fact() }}<br>
     {{ form.submit() }}
     {{ form.hidden_tag() }}
 </form>
 
+<div>
+{% for m in get_flashed_messages() %}
+{{ m }} <br>
+{% endfor %}
+</div>
 
 {% endblock %}
 

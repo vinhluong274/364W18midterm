@@ -2,13 +2,14 @@
 
 {% block content1 %}
 
-<h1>Fun Facts Submitted</h1>
-
+<h1>Name Search Results</h1>
 {% if length > 0 %}
+<p><strong>Facts submitted by {{ name }}: </strong></p>
   {% for fact in facts %}
       <p>"{{ fact[0] }}" -- <em> in {{ fact[1] }}</em></p>
   {% endfor %}
 {% else %}
-  <p>There have been no submissions yet.</p>
+  <p>There have been no submissions by {{ name }}.</p>
 {% endif %}
+<a href="{{url_for('all_names')}}">View Search History</a>
 {% endblock %}
