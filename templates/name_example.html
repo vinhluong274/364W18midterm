@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 
-{% block content1 %}
-
-<h1>Names Searched</h1>
-
+{% block content %}
+<h1>Name Search History</h1>
 {% for n in names %}
     <p>{{ n }}</p>
 {% endfor %}
-
-
 {% endblock %}
+
+{% block footer %} <center><em>Names Search History</center></em> {% endblock %}

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block content1 %}
+{% block content %}
 
 <h1>Search Facts by Name</h1>
 
@@ -9,5 +9,10 @@
     {{ form.submit() }}
     {{ form.hidden_tag() }}
 </form>
-
 {% endblock %}
+
+{% block content2 %}
+<a href="{{url_for('all_names')}}">View Search History</a>
+{% endblock %}
+
+{% block footer %} <center><em>Search By Name</center></em> {% endblock %}

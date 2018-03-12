@@ -7,25 +7,13 @@
     <li><a href="{{ url_for('all_names')}}">Names Searched</a></li>
 </ul>
 
-{% block content1 %}
-<h2>Tell us a fun fact about where you're from!</h2>
-<form action="{{ url_for('index') }}" method="POST">
-    {{ form.name.label() }}{{ form.name() }}<br>
-    {{ form.username.label() }}{{ form.username() }}<br>
-    {{ form.zipcode.label() }}{{ form.zipcode() }}<br>
-    {{ form.fact.label() }}{{ form.fact() }}<br>
-    {{ form.submit() }}
-    {{ form.hidden_tag() }}
-</form>
-
-<div>
-{% for m in get_flashed_messages() %}
-{{ m }} <br>
-{% endfor %}
-</div>
-
+{% block content %}
 {% endblock %}
 
-{% block content %}
-<p>Hope you enjoy this app.</p>
+{% block content2 %}
+{% endblock %}
+<hr>
+<p><em>Hope you enjoy this app -- vinhbl@umich.edu -- 2018</em></p>
+
+{% block footer %}
 {% endblock %}

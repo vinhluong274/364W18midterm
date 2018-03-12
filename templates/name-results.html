@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block content1 %}
+{% block content %}
 
 <h1>Name Search Results</h1>
 {% if length > 0 %}
@@ -13,3 +13,5 @@
 {% endif %}
 <a href="{{url_for('all_names')}}">View Search History</a>
 {% endblock %}
+
+{% block footer %} <center><em>Name Search Results</center></em> {% endblock %}
