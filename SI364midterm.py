@@ -26,7 +26,7 @@ manager = Manager(app)
 ######################################
 ######## HELPER FXNS (If any) ########
 ######################################
-
+#One 404 Handler
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
@@ -94,10 +94,12 @@ class UserForm(FlaskForm):
     fact = StringField("Enter a fun fact: ", validators=[Required()])
     submit = SubmitField("Submit")
 
+    #custom validator that ensures usernames are one word.
     def validate_username(self, field):
         if len(field.data.split()) > 1:
             raise ValidationError("Your username must be one word!")
 
+    #zipcodes must be 5 characters. 
     def validate_zipcode(self, field):
         if len(field.data) != 5:
             raise ValidationError("Please enter a valid 5-digit zipcode!")
@@ -121,7 +123,7 @@ class ZipForm(FlaskForm):
 #No Identical Submission allowed.
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = UserForm()
+    form = UserForm() #One additional WTForm using POST and displays submission alerts on the same page.
     if form.validate_on_submit():
         name = form.name.data.rstrip()
         username = form.username.data
@@ -180,7 +182,7 @@ def all_facts():
 #Additional WTForm to that uses POST to search facts by zipcode and displays results them on the same page.
 @app.route('/zipcode-search', methods=['POST', 'GET'])
 def zip_search():
-    form = ZipForm()
+    form = ZipForm() #Another WTForm using POST
     if form.validate_on_submit():
         zipcode = form.zipcode.data
         results = Facts.query.filter_by(place_id=zipcode).all()
@@ -205,7 +207,7 @@ def zip_search():
 #The new page will display any name matches, as well as a list of search history (duplicate name searches will be incliuded.)
 @app.route('/name-search', methods=['POST', 'GET'])
 def name_search():
-    form = NameForm()
+    form = NameForm()#An additional WTForm using GET and redirects to the view below.
     return render_template("name-search.html", form=form)
 
 #This is the redirect page for the previous function. It will use data from the previous form to query the database and display any facts entered by the name searched.
