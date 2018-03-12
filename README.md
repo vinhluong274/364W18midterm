@@ -58,7 +58,7 @@ Requirements:
  /names -> names_example.html
  
  
- /<incorrect-url> -> 404.html
+ / <-incorrect-url-> -> 404.html
  
  
  
